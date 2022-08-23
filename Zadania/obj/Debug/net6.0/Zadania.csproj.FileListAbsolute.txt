@@ -1,0 +1,15 @@
+F:\repos\Code Repos\Git\w3\w3resource\Zadania\bin\Debug\net6.0\Zadania.exe
+F:\repos\Code Repos\Git\w3\w3resource\Zadania\bin\Debug\net6.0\Zadania.deps.json
+F:\repos\Code Repos\Git\w3\w3resource\Zadania\bin\Debug\net6.0\Zadania.runtimeconfig.json
+F:\repos\Code Repos\Git\w3\w3resource\Zadania\bin\Debug\net6.0\Zadania.dll
+F:\repos\Code Repos\Git\w3\w3resource\Zadania\bin\Debug\net6.0\Zadania.pdb
+F:\repos\Code Repos\Git\w3\w3resource\Zadania\obj\Debug\net6.0\Zadania.csproj.AssemblyReference.cache
+F:\repos\Code Repos\Git\w3\w3resource\Zadania\obj\Debug\net6.0\Zadania.GeneratedMSBuildEditorConfig.editorconfig
+F:\repos\Code Repos\Git\w3\w3resource\Zadania\obj\Debug\net6.0\Zadania.AssemblyInfoInputs.cache
+F:\repos\Code Repos\Git\w3\w3resource\Zadania\obj\Debug\net6.0\Zadania.AssemblyInfo.cs
+F:\repos\Code Repos\Git\w3\w3resource\Zadania\obj\Debug\net6.0\Zadania.csproj.CoreCompileInputs.cache
+F:\repos\Code Repos\Git\w3\w3resource\Zadania\obj\Debug\net6.0\Zadania.dll
+F:\repos\Code Repos\Git\w3\w3resource\Zadania\obj\Debug\net6.0\refint\Zadania.dll
+F:\repos\Code Repos\Git\w3\w3resource\Zadania\obj\Debug\net6.0\Zadania.pdb
+F:\repos\Code Repos\Git\w3\w3resource\Zadania\obj\Debug\net6.0\Zadania.genruntimeconfig.cache
+F:\repos\Code Repos\Git\w3\w3resource\Zadania\obj\Debug\net6.0\ref\Zadania.dll
