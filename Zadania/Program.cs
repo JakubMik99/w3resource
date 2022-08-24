@@ -2,5 +2,6 @@
 using Zadania;
 
 BasicExercises BE = new BasicExercises();
-Console.WriteLine(BE.Zad18(5,25));
+    Console.WriteLine(BE.Zad38("PHP Tutorial"));
+
  

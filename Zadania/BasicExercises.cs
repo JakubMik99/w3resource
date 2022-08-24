@@ -140,6 +140,175 @@ namespace Zadania
         //21. Write a C# program to check the sum of the two given integers and return true if one of the integer is 20 or if their sum is 20.
         public bool Zad21(int firstVal, int secondVal)
         => firstVal==20 || secondVal==20 || firstVal+secondVal==20;
-        //22. Write a C# program to check if an given integer is within 20 of 100 or 200. 
+        //22. Write a C# program to check if an given integer is within 20 of 100 or 200.
+        public bool Zad22(int value) => IsBetween(value,80,120) || IsBetween(value,180,220);
+        private bool IsBetween(int value, int lowerBoundry, int highierBoundry) => value<=highierBoundry && value >=lowerBoundry; 
+        //23. Write a C# program to convert a given string into lowercase.
+        public string Zad23(string sentence) => sentence.ToLower();
+        //24. Write a C# program to find the longest word in a string.
+        public string Zad24(string sentence)
+        {
+            int index=0, maxWordLength=0;
+            string[] words = sentence.Split(' ');
+            for (int i = 0; i < words.Length; i++)
+            {
+                if (words[i].Length>maxWordLength)
+                {
+                    index= i;
+                    maxWordLength= words[i].Length;
+                }
+            }
+            return words[index];
+        }
+        //25. Write a C# program to print the odd numbers from 1 to 99. Prints one number per line
+        public void Zad25()
+        {
+            for (int i = 1; i <= 100; i+=2)
+                Console.WriteLine(i);
+        }
+        //26. Write a C# program to compute the sum of the first 500 prime numbers.
+        public int Zad26()
+        {
+            int counter=0, sumOfPrimes=0;
+
+          for (int i = 0; counter < 500; i++)
+          {
+            if (IsPrime(i))
+            {
+                counter++;
+                sumOfPrimes+=i;
+            }
+          }      
+          return sumOfPrimes;
+        }
+        private bool IsPrime(int value)
+        {
+            if (value<2)
+                return false;
+            else if(value==2)
+                return true;
+            for (int i = 2; i <= Math.Sqrt(value); i++)
+            {
+                if (value%i==0)
+                {
+                    return false;
+                }                
+            }
+            return true;
+        }
+        //27. Write a C# program and compute the sum of the digits of an integer.
+        public int Zad27(int value)
+        {
+            int sumOfDigits=0;
+            do
+            {
+                sumOfDigits+=value%10;
+                value/=10;
+            } while (value>0);
+            return sumOfDigits;
+        }
+        //28. Write a C# program to reverse the words of a sentence.
+        public string Zad28(string sentence)
+        {
+            string[] words = sentence.Split(' ');
+            return string.Join(' ', words.Reverse());
+        }
+        //29. Write a C# program to find the size of a specified file in bytes. 
+        public void Zad29(string fileName)
+        {
+            FileInfo file = new FileInfo(fileName);
+            Console.WriteLine($"size of the file is: {file.Length}");
+        }
+        //30. Write a C# program to convert a hexadecimal number to decimal number.
+        public int Zad30(string hexNumb)
+        {
+            return Convert.ToInt32(hexNumb,16);
+            
+        }
+        //31. Write a C# program to multiply corresponding elements of two arrays of integers.
+        public int[] Zad31(int[]tab1, int[]tab2)
+        {
+            int[] sum;
+            if(tab1.Length==tab2.Length)
+            {
+                sum = new int[tab1.Length];
+                for (int i = 0; i < tab1.Length; i++)
+                {
+                    sum[i] = tab1[i]*tab2[i];
+                }
+                return sum;
+            }
+            return tab1;
+        }
+        //32. Write a C# program to create a new string of four copies, taking last four characters from a given string. If the length of the given string is less than 4 return the original one.
+        public string Zad32(string sentence)
+        {
+            string lastPart="";
+            if (sentence.Length<4)
+                return $"{sentence}{sentence}{sentence}{sentence}";
+            else
+            {
+                lastPart= sentence[^4..];
+                return $"{lastPart}{lastPart}{lastPart}{lastPart}";
+            }
+        }
+        //33. Write a C# program to check if a given positive number is a multiple of 3 or a multiple of 7
+        public bool Zad33(int value)
+        {
+            return IsPositive(value)? (value%3==0 || value%7==0):false;
+        }
+        //34. Write a C# program to check if a string starts with a specified word. 
+        public bool Zad34(string sentence, string startsWith)=> sentence.StartsWith(startsWith);
+        //35. Write a C# program to check two given numbers where one is less than 100 and other is greater than 200.
+        public bool Zad35(int firstVal, int secondVal)=>(firstVal<100 && secondVal>200) ^ (secondVal<100 && firstVal>200);
+        //36. Write a C# program to check if an integer (from the two given integers) is in the range -10 to 10.
+        public bool Zad36(int firsVal, int secondVal) => IsBetween(firsVal,-10,10) || IsBetween(secondVal,-10,10);
+        //37. Write a C# program to check if "HP" appears at second position in a string and returns the string without "HP"
+        public string Zad37(string sentence)
+        {
+            if(!(sentence.Length<3))
+            {
+                if (sentence[1..3]=="HP")
+                {
+                return sentence.Remove(1,2);
+                }
+                else
+                {
+                return sentence;
+                }
+            }
+                return sentence;
+        }
+        //38. Write a C# program to get a new string of two characters from a given string. The first and second character of the given string must be "P" and "H", so PHP will be "PH".
+        public string Zad38(string sentence)
+        {
+            return sentence.StartsWith("PH")? sentence.Remove(2): sentence;
+        }
+        //39. Write a C# program to find the largest and lowest values from three integer values. 
+        public void Zad39(int firstVal, int secondVal, int thirdVal)
+        {
+            int lowest = Math.Min(firstVal,Math.Min(secondVal,thirdVal));
+            int largest = Math.Max(firstVal,Math.Max(secondVal,thirdVal));
+            Console.WriteLine($"Lowest value: {lowest}\nLargest value: {largest}");
+            
+        }
+        //40. Write a C# program to check the nearest value of 20 of two given integers and return 0 if two numbers are same. 
+        public int Zad40(int firstVal, int secondVal, int thirdVal)
+        {
+            if (firstVal==secondVal || secondVal==thirdVal || firstVal==thirdVal)
+            {
+                return 0;
+            }
+            else
+            {
+                if (Math.Abs(firstVal-20)<Math.Abs(secondVal-20) && Math.Abs(firstVal-20)<Math.Abs(thirdVal-20))
+                    return firstVal;
+                else if (Math.Abs(secondVal-20)<Math.Abs(firstVal-20) && Math.Abs(secondVal-20)<Math.Abs(thirdVal-20))
+                    return secondVal;
+                else
+                    return thirdVal;
+            }
+        }
+
     }
 }
