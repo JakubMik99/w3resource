@@ -309,6 +309,82 @@ namespace Zadania
                     return thirdVal;
             }
         }
+        //41. Write a C# program to check if a given string contains ‘w’ character between 1 and 3 times.
+        public bool Zad41(string sentence)
+        {
+            int licznik=0;
+            foreach (char item in sentence)
+            {
+                    
+                if (item=='w')
+                {
+                    if (licznik++>3)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return IsBetween(licznik,1,3);
+        }
+        //42. Write a C# program to create a new string where the first 4 characters will be in lower case. If the string is less than 4 characters then make the whole string in upper case.
+        public string Zad42(string sentence) => sentence.Length<4 ? sentence.ToUpper() : sentence[0..4].ToLower() + sentence[4..];
+        //43. Write a C# program to check if a given string starts with "w" and immediately followed by two "ww"
+        public bool Zad43(string sentence) => sentence.Length<5? false: sentence[0..5]=="wwwww";
+        //44. Write a C# program to create a new string of every other character (odd position) from the first position of a given string.
+        public string Zad44(string sentence)
+        {
+            string everyOdd = string.Empty;
+            for (int i = 0; i < sentence.Length; i++)
+            {
+                if (i%2==0)
+                {
+                    everyOdd +=sentence[i];
+                }
+            }
+            return everyOdd;
+        }
+        //45. Write a C# program to count a specified number in a given array of integers
+        public int Zad45(int searchedNumb, IEnumerable<int> array)
+        {
+            int counter=0;
+            foreach (var item in array)
+            {
+                if (item==searchedNumb)
+                {
+                    counter++;
+                }
+            }
+            return counter;
+        }
+        //46. Write a C# program to check if a number appears as either the first or last element of an array of integers and the length is 1 or more
+        public bool Zad46(int searchedNumb, IEnumerable<int> array)
+        => array.First()==searchedNumb || array.Last()==searchedNumb;
+        //47. Write a C# program to compute the sum of all the elements of an array of integers.
+        public int Zad47(IEnumerable<int> array)
+        {
+            int sum=0;
+            foreach (int number in array)
+                sum+=number;
+            return sum;
+        }
+        //48. Write a C# program to check if the first element and the last element are equal of an array of integers and the length is 1 or more
+        public bool Zad48(IEnumerable<int> array) =>array.First()==array.Last(); 
+        //49. Write a C# program to check if the first element or the last element of the two arrays ( length 1 or more) are equal.
+        public bool Zad49(IEnumerable<int> arrayA,IEnumerable<int> arrayB)
+            =>(IsNotNullAndEmpty(arrayA)&&IsNotNullAndEmpty(arrayB))? arrayA.First()==arrayB.First() || arrayA.Last()==arrayB.Last(): false; 
+        private bool IsNotNullAndEmpty(IEnumerable<int> array) =>(array !=null && array.Any());
+        //50. Write a C# program to rotate an array (length 3) of integers in left direction.
+        public int[] Zad50(int[] array)
+        {
+            int temp= array.First();
+            for (int i = 0; i <array.Length-1; i++)
+                array[i]=array[i+1];
+             array[^1]=temp;
+            return array;
+        }
+        //51. Write a C# program to get the larger value between first and last element of an array (length 3) of integers. 
+        public int Zad51(IEnumerable<int> array)=> Math.Max(array.First(),array.Last());
+
 
     }
 }
