@@ -384,7 +384,91 @@ namespace Zadania
         }
         //51. Write a C# program to get the larger value between first and last element of an array (length 3) of integers. 
         public int Zad51(IEnumerable<int> array)=> Math.Max(array.First(),array.Last());
+        //52. Write a C# program to create a new array of length containing the middle elements of three arrays (each length 3) of integers.
+        public int[] Zad52(int[] arr1, int[] arr2, int[] arr3) => new int[] {arr1[1],arr2[1],arr3[1]};
+        //53. Write a C# program to check if an array contains an odd number.
+        public bool Zad53(IEnumerable<int> array)
+        {
+            foreach (int number in array)
+            {
+                if (number%2!=0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        //54. Write a C# program to get the century from a year. 
+        public int Zad54(int year)=> year%100!=0? (year/100)+1: year/100;
+        //55. Write a C# program to find the pair of adjacent elements that has the largest product of an given array which is equal to a given value.
+        public int Zad55(int[] array)
+        {
+            int product=array[0]*array[1];
+            if (array.Length<2)
+                return int.MinValue;
+            if (array.Length==2)
+                return product;
 
+            for (int i = 1; i < array.Length-1; i++)
+                product= array[i]*array[i+1]>product? array[i]*array[i+1]:product;
 
+            return product;
+        }
+        //56. Write a C# program to check if a given string is a palindrome or not. 
+        public bool Zad56(string word)
+        {
+          for (int i = 0; i < word.Length/2; i++)
+          {
+            if(word[i]!=word[^(i+1)])
+                return false;
+          }  
+          return true;
+        }
+        //58. Write a C# program which will accept a list of integers and checks how many integers are needed to complete the range.
+        public List<int> Zad58(List<int> array)
+        {
+            int min = int.MaxValue, max = int.MinValue;
+            List<int> missingNumbers = new List<int>();
+            foreach (int value in array)
+            {
+                min = value<min? value: min;
+                max = value>max? value: max;
+            }
+            for (int i = min+1; i < max; i++)
+            {
+                if (!array.Contains(i))
+                    missingNumbers.Add(i);
+            }
+            return missingNumbers;
+        }
+        //59. Write a C# program to check whether it is possible to create a strictly increasing sequence from a given sequence of integers as an array.
+        public static bool Zad59(int[] sequence)
+        {
+            int x = 0;
+            for (int i = 0; i < sequence.Length - 1; i++)
+            {
+                if (sequence[i] >= sequence[i + 1])
+                    x++;
+                if (i + 2 < sequence.Length && sequence[i] >= sequence[i + 2])
+                    x++;
+            }
+            return x <= 2;
+        }
+        //60. Write a C# program to calculate the sum of all the integers of a rectangular matrix except those integers which are located below an intger of value 0
+        public static int Zad60(int[,] matrix)
+        {
+            int sum=0;
+            for (var i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (var j = 0; j < matrix.GetLength(1); j++)
+                {
+                    if (matrix[i,j]>0)
+                        sum+=matrix[i,j];
+                }
+            }
+         
+           return sum;
+        }
+        //61. Write a C# program to sort the integers in ascending order without moving the number -5.
     }
 }

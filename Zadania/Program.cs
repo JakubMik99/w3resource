@@ -1,7 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Zadania;
 BasicExercises BE = new BasicExercises();
-  Console.WriteLine(String.Join(',',BE.Zad50(new int[] {1,2,3})));
+List<int> lista = new List<int>() {1,5,1,12,4};
+  // Console.WriteLine(String.Join(',',BE.Zad50(new int[] {1,2,3})));
+  Console.WriteLine(String.Join(',', BE.Zad58(lista)));
+  
    
 
  
