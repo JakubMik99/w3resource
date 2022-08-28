@@ -605,6 +605,75 @@ namespace Zadania
             return average;
         }
         //73. Write a C# Sharp program to convert the letters of a given string (same case-upper/lower) into alphabetical order.
+        public string Zad73(string word)
+        {
+            string alphabetical= string.Empty;
+            int lengthAtBeg = word.Length, lowestId=-1, lowestVal=int.MaxValue;
+            do
+            {
+                for (var i = 0; i < word.Length; i++)
+                {
+                    if (lowestVal>word[i])
+                    {
+                        lowestVal=word[i];
+                        lowestId=i;
+                    }
+                }
+                alphabetical+=word[lowestId];
+                word = word.Remove(lowestId,1);
+                lowestVal=int.MaxValue;
+            } while (alphabetical.Length<lengthAtBeg);
+            return alphabetical;
+            //return new string(word.OrderBy(x=>x).ToArray());
+        }
+        //74. Write a C# Sharp program to check the length of a given string is odd or even. Return 'Odd length' if the string length is odd otherwise 'Even length'.
+        public string Zad74(string word) => word.Length%2==0? "Even length" : "Odd length";
+        //75. Write a C# Sharp program which takes a positive number and return the nth odd number.
+        public int Zad75(int whichOddNumber) => (whichOddNumber*2)-1;
+        //76. Write a C# Sharp program to get the ASCII value of a given character.
+        public int Zad76(char character) => (int)character;
+        //77. Write a C# Sharp program to check whether a given word is plural or not.
+        public bool Zad77(string word) => word.EndsWith('s');
+        //78. Write a C# Sharp program to find sum of squares of elements of a given array of integers.
+        public int Zad78(IEnumerable<int> collection) => collection.Sum(x =>x*x);
+        //79. Write a C# Sharp program to convert an integer to string and a string to an integer.
+        public void Zad79(string word) => ParseToInt(word);
+        public void Zad79(int value) => value.ToString();
+        //80. Write a C# Sharp program to convert all the values of a given array of mixed values to string values
+        public string Zad80(IEnumerable<object> collection)
+        {
+            string valueTypes = string.Empty;
+            foreach (var item in collection)
+            {
+                valueTypes += $"value: {item} | type: {item.GetType()}\n";
+            }
+            return valueTypes;
+
+        }
+        //81. Write a C# Sharp program to swap a two digit given number and check whether the given number is greater than its swap value.
+        public bool Zad81(int value)
+        {
+            int switchedVal;
+            if (value<10||value>100)
+                return false;
+            switchedVal = (value%10)*10 + value/10;
+            return switchedVal < value;
+        }
+        //82. Write a C# Sharp program to remove all characters which are non-letters from a given string
+        public string Zad82(string word)
+        {
+            for (var i = word.Length-1; i >= 0; i--)
+            {
+                if (!(IsLower(word[i])|| IsUpper(word[i])))
+                {
+                    word = word.Remove(i,1);
+                }
+            }
+            return word;
+        }
+        private bool IsLower(char letter) => letter>96 && letter<122;
+        private bool IsUpper(char letter) => letter>64 && letter<91;
+        //83. Write a C# Sharp program to remove all vowels from a given string.
         
 
 
