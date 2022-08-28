@@ -674,7 +674,38 @@ namespace Zadania
         private bool IsLower(char letter) => letter>96 && letter<122;
         private bool IsUpper(char letter) => letter>64 && letter<91;
         //83. Write a C# Sharp program to remove all vowels from a given string.
-        
+        public string Zad83(string sentence)
+        {
+            char[] vowels = {'a','e','i','o','u','y'};
+            for (var i = 0; i < sentence.Length; i++)
+            {
+                if(vowels.Contains(sentence[i]))
+                    sentence = sentence.Remove(i,1);
+            }
+            return sentence;
+        }
+        //84. Write a C# Sharp program to get the index number of all lower case letters in a given string.
+        public List<int> Zad84(string sentence)
+        {
+            List<int> indexList = new List<int>();
+            for (var i = 0; i < sentence.Length; i++)
+            {
+                indexList.Add(i);
+            }
+            return indexList;
+        }
+        //85. Write a C# Sharp program to find the cumulative sum of an array of number.
+        public List<int> Zad85(IEnumerable<int> collection)
+        {
+            int sum=0;
+            List<int> cumulativeSum = new List<int>();
+            foreach (int item in collection)
+            {
+                sum +=item;
+                cumulativeSum.Add(sum);
+            }
+            return cumulativeSum;
+        }
 
 
 
