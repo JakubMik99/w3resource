@@ -470,5 +470,154 @@ namespace Zadania
            return sum;
         }
         //61. Write a C# program to sort the integers in ascending order without moving the number -5.
+        public int[] Zad61(int[] array)
+        {
+            int[] num = array.Where(x => x != -5).OrderBy(x => x).ToArray();
+            int ctr = 0;
+
+            return array.Select(x => x >= 0 ? num[ctr++] : -5).ToArray();
+        }
+        //62. Write a C# program to reverse the strings contained in each pair of matching parentheses in a given string and also remove the parentheses within the given string.
+        public string Zad62(string sentence)
+        {
+            int lParenth =sentence.IndexOf('('),rParenth;
+            if (lParenth==-1)
+                return sentence;
+            else
+            {
+                rParenth= sentence.IndexOf(')');
+                string reverse = new string(sentence[(lParenth+1)..(rParenth)].Reverse().ToArray());
+                return sentence[0..lParenth] + reverse + sentence[(rParenth+1)..];
+            }
+        }
+        //63. Write a C# program to check if a given number present in an array of numbers
+        public bool Zad63(IEnumerable<int> array, int searchedNumb)
+        {
+            foreach (var item in array)
+            {
+                if (searchedNumb==item)
+                    return true;
+            }
+            return false;
+        }
+        //64. Write a C# Sharp program to get the file name (including extension) from a given path.
+        public string Zad64(string path) => path.Split('\\').Last();
+        //65. Write a C# Sharp program to multiply all of elements of a given array of numbers by the array length.
+        public int[] Zad65(int[] collection)
+        {
+            int length = collection.Length;
+            int[] multipliedCollection = new int[length];
+            for (var i = 0; i < length; i++)
+            {
+                multipliedCollection[i] = collection[i]*length;
+            }
+            return multipliedCollection;
+        }
+        //66. Write a C# Sharp program to find the minimum value from two given two numbers, represented as string.
+        public string Zad66(string firstVal, string secondVal) => Math.Min(ParseToInt(firstVal),ParseToInt(secondVal)).ToString();
+        private int ParseToInt(string value)
+        {
+            int result;
+            if (int.TryParse(value, out result))
+            {
+                return result;
+            }
+            else
+            {
+                Console.WriteLine($"Could not parse the string to int");
+                return int.MinValue;
+            }
+        }
+        //67. Write a C# Sharp program to create a coded string from a given string, using specified formula. Replace all 'P' with '9', 'T' with '0', 'S' with '1', 'H' with '6' and 'A' with '8'.
+        public string Zad67(string word)
+        {
+            string codedString= string.Empty;
+            foreach (char item in word)
+            {
+                switch (item)
+                {
+                    case 'P':
+                    codedString+='9';
+                    break;
+                    case 'T':
+                    codedString+='0';
+                    break;
+                    case 'S':
+                    codedString+='1';
+                    break;
+                    case 'H':
+                    codedString+='6';
+                    break;
+                    case 'A':
+                    codedString+='8';
+                    break;
+                    
+                    default:
+                    codedString+=item;
+                    break;
+                }
+            }
+                return codedString;
+        }
+        //68. Write a C# Sharp program to count a specified character (both cases) in a given string
+        public int Zad68(string word, char searchedChar)
+        {
+            int counter = 0;
+         foreach (char item in word)
+         {
+            if (char.ToLower(item)==char.ToLower(searchedChar))
+                counter++;
+         }
+         return counter;   
+        }
+        //69. Write a C# Sharp program to check if a given string contains only lowercase or uppercase characters.
+        public bool Zad69(string word) => word==word.ToLower() || word==word.ToUpper();
+        //70. Write a C# Sharp program to remove the first and last elements from a given string.
+        public string Zad70(string word)
+        {
+            if (String.IsNullOrEmpty(word)|| word.Length==1)
+                return string.Empty;
+            else
+                return word[1..^1];
+        }
+        //71. Write a C# Sharp program to check if a given string contains two similar consecutive letters.
+        public bool Zad71(string word)
+        {
+            for (var i = 0; i < word.Length-1; i++)
+            {
+                if (char.ToLower(word[i])==char.ToLower(word[i+1]))
+                    return true;
+            }
+            return false;
+        }
+        //72. Write a C# Sharp program to check whether the average value of the elements of a given array of numbers is a whole number or not.
+        public bool Zad72(IEnumerable<int> collection) => Average(collection)%1==0;
+        private decimal Average(IEnumerable<int> collection)
+        {
+            decimal sum = 0, count = 0;
+            decimal average =0;
+            foreach (int value in collection)
+            {
+                count++;
+                sum +=value;
+            }
+            average = (decimal)(sum/count);
+            return average;
+        }
+        //73. Write a C# Sharp program to convert the letters of a given string (same case-upper/lower) into alphabetical order.
+        
+
+
+
+
+
+
+
+
+
+
+
+
     }
+
 }
