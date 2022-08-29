@@ -706,7 +706,83 @@ namespace Zadania
             }
             return cumulativeSum;
         }
+        //86. Write a C# Sharp program to get the number of letters and digits in a given string.
+        public string Zad86(string sentence)
+        {
+            int digitCounter=0, letterCounter=0;
+            foreach (char item in sentence)
+            {
+                if (IsUpper(item)||IsLower(item))
+                    letterCounter++;
 
+                else if(IsDigit(item))
+                    digitCounter++;
+            }
+            return $"Digits in sentence {digitCounter}\nLetters in counter{letterCounter}";
+        }
+        private bool IsDigit(char character) => character>47 && character <58;
+        //87. Write a C# Sharp program to reverse a boolean value. 
+        public bool Zad87(bool value) => !value;
+        //88. Write a C# Sharp program to find the sum of the interior angles (in degrees) of a given Polygon. Input number of straight line(s).
+        public int Zad88(int numberOfSides) => 180*(numberOfSides-2);
+        //89. Write a C# Sharp program to count positive and negative numbers in a given array of integers.
+        public string Zad89(IEnumerable<int> collection,out int positiveCounter, out int negativeCounter)
+        {
+            positiveCounter=0;
+            negativeCounter = 0;
+            foreach (int item in collection)
+            {
+                if (item>0)
+                    positiveCounter++;
+
+                else if(item<0)
+                    negativeCounter++;
+            }
+            return $"Amount of positive numbers: {positiveCounter}\nAmount of negative numbers: {negativeCounter}";
+        }
+        //90. Write a C# Sharp program to count number of ones and zeros in the binary representation of a given integer.
+        public string Zad90(int value,out int oneCounter, out int zeroCounter)
+        {
+            oneCounter= 0; zeroCounter=0;
+            string binaryValue = Convert.ToString(value,2);
+            foreach (char item in binaryValue)
+            {
+                if (item=='1')
+                    oneCounter++;
+                else
+                    zeroCounter++;
+            }
+            return $"Number of ones {oneCounter}\nNumber of zeros {zeroCounter}";
+        }
+        //91. Write a C# Sharp program to remove all the values except integer values from a given array of mixed values.
+        public List<int> Zad91(IEnumerable<object> collection)
+        {
+            List<int> onlyNumbers = new List<int>();
+            foreach(var item in collection)
+            {
+                if (item is int)
+                    onlyNumbers.Add((int)item);
+            }
+            return onlyNumbers;
+            //alternatywnie mogę zastosować             return collection.OfType<int>().ToArray();    przez co bym musiał zamienić liste int na array
+        }
+        //92. Write a C# Sharp program to find the next prime number of a given number. If the given number is a prime number, return the number.
+        public int Zad92(int value)
+        {
+            if(IsPrime(value))
+                return value;
+            else
+            {
+                do
+                {
+                } while (!IsPrime(++value));
+                return value;
+            }
+        }
+        
+        
+
+        
 
 
 
