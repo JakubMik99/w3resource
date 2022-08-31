@@ -142,7 +142,7 @@ namespace Zadania
         => firstVal==20 || secondVal==20 || firstVal+secondVal==20;
         //22. Write a C# program to check if an given integer is within 20 of 100 or 200.
         public bool Zad22(int value) => IsBetween(value,80,120) || IsBetween(value,180,220);
-        private bool IsBetween(int value, int lowerBoundry, int highierBoundry) => value<=highierBoundry && value >=lowerBoundry; 
+        public bool IsBetween(int value, int lowerBoundry, int highierBoundry) => value<=highierBoundry && value >=lowerBoundry; 
         //23. Write a C# program to convert a given string into lowercase.
         public string Zad23(string sentence) => sentence.ToLower();
         //24. Write a C# program to find the longest word in a string.
