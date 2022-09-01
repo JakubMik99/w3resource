@@ -102,9 +102,202 @@ namespace Zadania
                 return withRepeats;
         }
         //26. Write a C# Sharp program to create a new string which is n (non-negative integer) copies of the the first 3 characters of a given string. If the length of the given string is less than 3 then return n copies of the string.
+        public string Zad26(string sentence, int count)
+        {
+            string copies = string.Empty;
+            if (count >0)
+            {
+                if (sentence.Length<3)
+                {
+                    for (var i = 0; i < count; i++)
+                        copies += sentence;
+                }
+                else
+                {
+                    for (var i = 0; i < count; i++)
+                        copies+=sentence[0..3];
+                }
+            }
+            return copies;
+        }
+        //27. Write a C# Sharp program to count the string "aa" in a given string and assume "aaa" contains two "aa"
+        public int Zad27(string sentence)
+        {
+            int aaCount=0;
+            for (var i = 0; i < sentence.Length-1; i++)
+            {
+                if (sentence[i]=='a'&& sentence[i+1]=='a')
+                    aaCount++;
+            }
+            return aaCount;
+        }
+        //28. Write a C# Sharp program to check if the first appearance of "a" in a given string is immediately followed by another "a"
+        public bool Zad28(string sentence)
+        {
+            for (var i = 0; i < sentence.Length-1; i++)
+            {
+                if (sentence[i]=='a')
+                {
+                    if (sentence.Substring(i,2)=="aa")
+                        return true;
+                    else
+                        return false;
+                }
+            }
+            return false;
+        }
+        //29. Write a C# Sharp program to create a new string made of every other character starting with the first from a given string.
+        public string Zad29(string sentence)
+        {
+            string everyOtherLetter = string.Empty;
 
-
-
+            for (var i = 0; i < sentence.Length; i++)
+            {
+                if (i%2==0)
+                everyOtherLetter+=sentence[i];
+            }
+            return everyOtherLetter;
+        }
+        //30. Write a C# Sharp program to create a string like "aababcabcd" from a given string "abcd".
+        public string Zad30(string sentence)
+        {
+            int counter =1;
+            string copy = string.Empty;
+            do
+            {
+                for (var i = 0; i < counter; i++)
+                {
+                    copy+=sentence[i];
+                }
+            } while (counter++<sentence.Length);
+            return copy;
+        }
+        //31. Write a C# Sharp program to count a substring of length 2 appears in a given string and also as the last 2 characters of the string. Do not count the end substring.
+        public int Zad31(string sentence)
+        {
+            int counter = 0;
+            if (sentence.Length>=2)
+            {
+                string sub = sentence.Substring(0,2);
+                for (var i = 0; i <sentence.Length-2 ; i++)
+                {
+                    if (sub==sentence.Substring(i,2))
+                     counter++;   
+                }
+            }
+            return counter;
+        }
+        //32. Write a C# Sharp program to check a specified number is present in a given array of integers.
+        public bool Zad32(IEnumerable<int> collection, int searchedVal) => collection.Contains(searchedVal);
+        //33. Write a C# Sharp program to check if one of the first 4 elements in an array of integers is equal to a given element.
+        public bool Zad33(int[] array, int searchedVal)
+        {
+            if (array.Length<4)
+                return array.Contains(searchedVal);
+            else
+            {
+                for (var i = 0; i < 4; i++)
+                {
+                    if (array[i]==searchedVal)
+                        return true;
+                }
+                        return false; 
+            }
+        }
+        //34. Write a C# Sharp program to check whether the sequence of numbers 1, 2, 3 appears in a given array of integers somewhere
+        public bool Zad34(int[] array)
+        {
+            if (array.Length>2)
+            {
+                for (var i = 0; i < array.Length-2; i++)
+                {
+                    if (array[i]==1 && array[i+1]==2 && array[i+2]==3)
+                    {
+                        return true;
+                    }
+                }
+                
+            }
+                return false;
+        }
+        //35. Write a C# Sharp program to compare two given strings and return the number of the positions where they contain the same length 2 substring.
+        public int Zad35(string firstSen, string secondSen)
+        {
+            int loopLength= Math.Min(firstSen.Length,secondSen.Length)-1;
+            int counter =0;
+            for (var i = 0; i < loopLength; i++)
+            {
+                if (firstSen.Substring(i,2)==secondSen.Substring(i,2))
+                    counter++;
+            }
+            return counter;
+        }
+        //37. Write a C# Sharp program to create a new string of the characters at indexes 0,1, 4,5, 8,9 ... from a given string
+        public string Zad37(string sentence)
+        {
+            int index=0;
+            bool flag = true;
+            string toReturn = string.Empty;
+            do
+            {
+                toReturn += sentence[index];
+                if (flag)
+                {
+                    flag = false;
+                    index++;
+                }
+                else
+                {
+                    flag = true;
+                    index +=3;
+                }
+                
+            } while (index<sentence.Length);
+            return toReturn;
+        }
+        //38. Write a C# Sharp program to count the number of two 5's are next to each other in an array of integers. Also count the situation where the second 5 is actually a 6.
+        public int Zad38(int[] array)
+        {
+            int counter = 0;
+            for (var i = 0; i < array.Length-1; i++)
+            {
+                if (array[i]==5 && (array[i+1]==5 || array[i+1]==6))
+                    counter++;
+            }
+            return counter;
+        }
+        //39. Write a C# Sharp program to check if a triple is presents in an array of integers or not. If a value appears three times in a row in an array it is called a triple
+        public bool Zad39(int[] array)
+        {
+            for (var i = 0; i < array.Length-2; i++)
+            {
+                if (array[i]==array[i+1]&& array[i]==array[i+2])
+                    return true;
+            }
+            return false;
+        }
+        //40. Write a C# Sharp program to compute the sum of the two given integers. If the sum is in the range 10..20 inclusive return 30.
+        public int Zad40(int firstVal, int secondVal) => BA.IsBetween(firstVal+secondVal,10,20) ? 30 : firstVal+secondVal;
+        //41. Write a C# Sharp program that accept two integers and return true if either one is 5 or their sum or difference is 5.
+        public bool Zad41(int firstVal, int secondVal) => firstVal+secondVal==5 ||Math.Abs(firstVal-secondVal)==5||Math.Abs(secondVal+firstVal)==5 || secondVal==5 || firstVal==5;
+        //42. Write a C# Sharp program to test if a given non-negative number is a multiple of 13 or it is one more than a multiple of 13
+        public bool Zad42(int value) => value%13==0 || value%13==1;
+        //43. Write a C# Sharp program to check if a given non-negative given number is a multiple of 3 or 7, but not both.
+        public bool Zad43(int value) => value%3==0 ^ value%7==0;
+        //44. Write a C# Sharp program to check if a given number is within 2 of a multiple of 10.
+        public bool Zad44(int value) => value<10 ? value%10<=2: value%10<=2 || value%10>=8;
+        //45. Write a C# Sharp program to compute the sum of the two given integers. If one of the given integer value is in the range 10..20 inclusive return 18.
+        public int Zad45(int firstVal, int secondVal) => BA.IsBetween(firstVal,10,20) || BA.IsBetween(secondVal,10,20) ? 18: firstVal+secondVal;
+        //46. Write a C# Sharp program to check whether a given string starts with "F" or ends with "B". If the string starts with "F" return "Fizz" and return "Buzz" if it ends with "B" If the string starts with "F" and ends with "B" return "FizzBuzz". In other cases return the original string.
+        public string Zad46(string sentence) => sentence.StartsWith('F') && sentence.EndsWith('B') ? "FizzBuzz" : sentence.StartsWith('F') ? "Fizz" : sentence.EndsWith('B') ? "Buzz" : sentence;
+        //47. Write a C# Sharp program to check if it is possible to add two integers to get the third integer from three given integers.
+        public bool Zad47(int firstVal, int secondVal, int thirdVal) => (firstVal+secondVal==thirdVal || thirdVal+secondVal==firstVal || thirdVal+firstVal==secondVal );
+        //48. Write a C# Sharp program to check if y is greater than x, and z is greater than y from three given integers x,y,z
+        public bool Zad48(int x, int y, int z) => x<y && y<z;
+        //49. Write a C# Sharp program to check if three given numbers are in strict increasing order, such as 4 7 15, or 45, 56, 67, but not 4 ,5, 8 or 6, 6, 8.However,if a fourth parameter is true, equality is allowed, such as 6, 6, 8 or 7, 7, 7.
+        public bool Zad49(int firstVal, int secondVal, int thirdVal, bool flag)=> flag? firstVal<=secondVal && secondVal<=thirdVal : firstVal<secondVal && secondVal<thirdVal;
+        //50. Write a C# Sharp program to check if two or more non-negative given integers have the same rightmost digit.
+        public bool Zad50()
 
 
 
