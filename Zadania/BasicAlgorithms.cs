@@ -395,8 +395,57 @@ namespace Zadania
         //75. Write a C# Sharp program to create a new string taking 3 characters from the middle of a given string at least 3.
         public string Zad75(string sentence) => sentence.Length>2? sentence.Substring(sentence.Length/2-1,3):sentence;
         //76. Write a C# Sharp program to create a new string of length 2, using first two characters of a given string. If the given string length is less than 2 use '#' as missing characters.
-        public string Zad76(string sentence) => "";
-
+        public string Zad76(string sentence) => sentence.Length>1? sentence[0..2]: (sentence.Length==1? sentence+'#':"##");
+        //77. Write a C# Sharp program to create a new string taking the first character from a given string and the last character from another given string. If the length of any given string is 0, use '#' as its missing character
+        public string Zad77(string firstSen, string secondSen)
+        {
+            string finalVer = string.Empty;
+            finalVer+= firstSen.Length<1? '#': firstSen[0];
+            finalVer+= secondSen.Length<1? '#': secondSen[^1];
+            return finalVer;
+        }
+        //78. Write a C# Sharp program to combine two given strings (lowercase). If there are any double character in new string then omit one character.
+        public string Zad78(string firstSen, string secondSen) =>firstSen[^1]==secondSen[0]? firstSen+secondSen[1..] : firstSen+secondSen;
+        //79. Write a C# Sharp program to create a new string from a given string after swapping last two characters.
+        public string Zad79(string sentence)
+        {
+            if (sentence.Length<2)
+                return sentence;
+            else
+                return sentence[0..^2]+ sentence[^1] + sentence[^2];                
+        }
+        //80. Write a C# Sharp program to check if a given string begins with 'abc' or 'xyz'. If the string begins with 'abc' or 'xyz' return 'abc' or 'xyz' otherwise return the empty string
+        public string Zad80(string sentence) => sentence.StartsWith("abc") ? "abc" : sentence.StartsWith("xyz") ? "xyz" : string.Empty;
+        //81. Write a C# Sharp program to check whether the first two characters and last two characters of a given string are same.
+        public bool Zad81(string sentence) => sentence[0..2]==sentence[^2..];
+        //82. Write a C# Sharp program to combine two given strings. If the given strings have different length remove the characters from the longer string.
+        public string Zad82(string firstSen, string secondSen)
+        {
+            int firstLen = firstSen.Length, secondLen = secondSen.Length;
+            if (firstLen==secondLen)
+                return firstSen+secondSen;
+            else if (firstLen>secondLen)
+                return firstSen[0..(secondLen)] +secondSen;
+            else
+                return firstSen + secondSen[0..(firstLen)];
+        }
+        //83. Write a C# Sharp program to create a new string using 3 copies of the first 2 characters of a given string. If the length of the given string is less than 2 use the whole string. 
+        public string Zad83(string sentence) => sentence.Length<2? sentence+sentence+sentence : sentence[0..2] + sentence[0..2] + sentence[0..2];
+        //84. Write a C# Sharp program to create a new string from a given string. If the two characters of the given string from its beginning and end are same return  the given string without the first two characters otherwise return the original string.
+        public string Zad84(string sentence) => sentence.Length<1?sentence :sentence[0..2]==sentence[^2..]? sentence.Remove(0,2):sentence;
+        //85. Write a C# Sharp program to create a new string from a given string without the first two characters. Keep the first character if it is "p" and keep the second character if it is "y".
+        public string Zad85(string sentence)
+        {
+            if (sentence.Length>1)
+            {
+                if (sentence[1]=='y')
+                   sentence= sentence.Remove(1,1);
+                if (sentence[0]=='p')
+                    sentence = sentence.Remove(0,1);
+            }
+            return sentence;
+        }
+        //86. Write a C# Sharp program to create a new string from a given string without the first and last character if the first or last characters are 'a' otherwise return the original given string
 
 
 
