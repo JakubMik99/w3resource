@@ -297,7 +297,119 @@ namespace Zadania
         //49. Write a C# Sharp program to check if three given numbers are in strict increasing order, such as 4 7 15, or 45, 56, 67, but not 4 ,5, 8 or 6, 6, 8.However,if a fourth parameter is true, equality is allowed, such as 6, 6, 8 or 7, 7, 7.
         public bool Zad49(int firstVal, int secondVal, int thirdVal, bool flag)=> flag? firstVal<=secondVal && secondVal<=thirdVal : firstVal<secondVal && secondVal<thirdVal;
         //50. Write a C# Sharp program to check if two or more non-negative given integers have the same rightmost digit.
-        public bool Zad50()
+        public bool Zad50(int firstVal, int secondVal) => (firstVal>0 && secondVal>0) && firstVal%10==secondVal%10;
+        //51. Write a C# Sharp program to check three given integers and return true if one of them is 20 or more less than one of the others.
+        public bool Zad51(int firstVal, int secondVal, int thirdVal)
+        {
+            if (firstVal-secondVal>=20 ||firstVal-thirdVal>=20 ||thirdVal-secondVal>=20 ||thirdVal-firstVal>=20 || secondVal-firstVal>=20  || secondVal-firstVal>=20 )
+                return true;   
+             else
+                return false;
+        }
+        //52. Write a C# Sharp program to find the larger from two given integers. However if the two integers have the same remainder when divided by 7, then the return the smaller integer. If the two integers are the same, return 0.
+        public int Zad52(int firstVal, int secondVal) => firstVal==secondVal? 0 : firstVal%7==secondVal%7? Math.Min(firstVal,secondVal) : Math.Max(firstVal,secondVal);
+        //53. Write a C# Sharp program to check two given integers, each in the range 10..99. Return true if a digit appears in both numbers, such as the 3 in 13 and 33.
+        public bool Zad53(int firstVal, int secondVal)
+        {
+            if (BA.IsBetween(firstVal,10,99)&& BA.IsBetween(secondVal,10,99))
+                return firstVal/10 == secondVal/10 || firstVal%10 == secondVal/10 || firstVal/10 == secondVal%10 || firstVal%10==secondVal%10; 
+            return false;
+        }
+        //54. Write a C# Sharp program to compute the sum of two given non-negative integers x and y as long as the sum has the same number of digits as x. If the sum has more digits than x then return x without y.
+        public int Zad54(int firstVal, int secondVal) 
+        => firstVal>0 && secondVal>0 ? ((firstVal +secondVal).ToString().Length>firstVal.ToString().Length? firstVal : firstVal + secondVal):int.MinValue;
+        //55. Write a C# Sharp program to compute the sum of three given integers. If the two values are same return the third value.
+        public int Zad55(int firstVal, int secondVal, int thirdVal)
+        {
+            if (firstVal==secondVal)
+                return thirdVal;
+            else if (firstVal==thirdVal)
+                return secondVal;
+            else if(secondVal == thirdVal)
+                return firstVal;
+            else
+                return firstVal+ secondVal+ thirdVal;
+        }
+        //56. Write a C# Sharp program to compute the sum of the three integers. If one of the values is 13 then do not count it and its right towards the sum.
+        public int Zad56(IEnumerable<int> collection)
+        {
+            int sum=0;
+            foreach (int value in collection)
+            {
+                if (value==13)
+                    return sum;
+                sum +=value;
+            }
+            return sum;
+        }
+        public int Zad57(IEnumerable<int> collection)
+        {
+            int sum = 0;
+            foreach (int value in collection)
+            {
+                if (BA.IsBetween(value,10,20))
+                {
+                    if (value==13 || value==17)
+                        sum += value;
+                }
+                else
+                    sum += value;
+            }
+            return sum;
+        }
+        //58. Write a C# Sharp program to check two given integers and return the value whichever value is nearest to 13 without going over. Return 0 if both numbers go over.
+        public int Zad58(int firstVal, int secondVal) 
+        => firstVal>13 && secondVal>13? 0: Math.Max(firstVal-13,secondVal-13)>0 ? Math.Min(firstVal,secondVal) : Math.Max(firstVal,secondVal);
+        //59. Write a C# Sharp program to check three given integers (small, medium and large) and return true if the difference between small and medium and the difference between medium and large is same
+        public bool Zad59(int small, int medium, int large) => small-medium==medium-large;
+        //60. Write a C# Sharp program to create a new string using two given strings s1, s2, the format of the new string will be s1s2s2s1.
+        public string Zad60(string firstSen, string secondSen) => firstSen+secondSen+secondSen+firstSen;
+        //61. Write a C# Sharp program to insert a given string into middle of the another given string of length 4.
+        public string Zad61(string sentence, string inserted)=> sentence.Insert((sentence.Length/2),inserted);
+        //62. Write a C# Sharp program to create a new string using three copies of the last two character of a given string of length atleast two.
+        public string Zad62(string sentence) => sentence.Length>1? sentence[^2..]+sentence[^2..]+sentence[^2..] : "string is not long enough";
+        //63. Write a C# Sharp program to create a new string using first two characters of a given string. If the string length is less than 2 then return the original string..
+        public string Zad63(string sentence) => sentence.Length>1? sentence[0..2]: sentence;
+        //64. Write a C# Sharp program to create a new string of the first half of a given string of even length.
+        public string Zad64(string sentence) => sentence[0..(sentence.Length/2)];
+        //65. Write a C# Sharp program to create a new string without the first and last character of a given string of length at least two.
+        public string Zad65(string sentence) => sentence.Length>1? sentence[1..^1] :string.Empty;
+        //66. Write a C# Sharp program to create a new string from two given string one is shorter and another is longer. The format of the new string will be long string + short string + long string.
+        public string Zad66(string firstWord, string secondWord) => firstWord.Length>secondWord.Length? firstWord+secondWord+firstWord: secondWord+firstWord+secondWord;
+        //67. Write a C# Sharp program to concat two given string of length atleast 1, after removing their first character.
+        public string Zad67(string firstSen, string secondSen) => firstSen.Length>0&& secondSen.Length>0? firstSen[1..]+secondSen[1..]: string.Empty;
+        //68. Write a C# Sharp program to move the first two characters to the end of a given string of length at least two.
+        public string Zad68(string sentence) => sentence.Length>1? sentence[2..]+sentence[0..2]: sentence;
+        //69. Write a C# Sharp program to move the last two characters to the start of a given string of length at least two.
+        public string Zad69(string sentence) => sentence.Length>1? sentence[^2..]+sentence[0..^2]:sentence;
+        //70. Write a C# Sharp program to create a new string without the first and last character of a given string of any length.
+        public string Zad70(string sentence) => sentence.Length>2? sentence[1..^1] : string.Empty;
+        //71. Write a C# Sharp program to create a new string using the two middle characters of a given string of even length (at least 2)
+        public string Zad71(string sentence) => sentence.Length>1? sentence.Substring(sentence.Length/2-1,2): sentence;
+        //72. Write a C# Sharp program to check if a given string ends with "on".
+        public bool Zad72(string sentence) => sentence.EndsWith("on");
+        //73. Write a C# Sharp program to create a new string using the first and last n characters from a given string of length at least n.
+        public string Zad73(string sentence, int length)=>length<sentence.Length? sentence[0..length] + sentence[^length..]:sentence;
+        //74. Write a C# Sharp program to create a new string of length 2 starting at the given index of a given string.
+        public string Zad74(string sentence,int index) => sentence.Substring(index,2);
+        //75. Write a C# Sharp program to create a new string taking 3 characters from the middle of a given string at least 3.
+        public string Zad75(string sentence) => sentence.Length>2? sentence.Substring(sentence.Length/2-1,3):sentence;
+        //76. Write a C# Sharp program to create a new string of length 2, using first two characters of a given string. If the given string length is less than 2 use '#' as missing characters.
+        public string Zad76(string sentence) => "";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
