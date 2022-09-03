@@ -446,6 +446,362 @@ namespace Zadania
             return sentence;
         }
         //86. Write a C# Sharp program to create a new string from a given string without the first and last character if the first or last characters are 'a' otherwise return the original given string
+        public string Zad86(string sentence)
+        {
+            if(sentence.Length>0)
+            {
+                if (sentence[^1]=='a')
+                    sentence= sentence.Remove(sentence.Length-1,1);
+                if (sentence[1]=='a')
+                    sentence= sentence.Remove(0,1);
+            }
+            return sentence;
+        }
+        //87. Write a C# Sharp program to create a new string from a given string. If the first or first two characters is 'a', return the string without those 'a' characters otherwise return the original given string.
+        public string Zad87(string sentence) 
+        {
+            if (sentence.StartsWith("aa"))
+                sentence = sentence.Remove(0,2);
+            else if(sentence[0]=='a')
+                sentence = sentence.Remove(0,1);
+            return sentence;
+        } 
+        //88. Write a C# Sharp program to check a given array of integers of length 1 or more and return true if 10 appears as either first or last element in the given array.
+        public bool Zad88(int[] array) => array[0]==10 || array[^1]==10;
+        //89. Write a C# Sharp program to check a given array of integers of length 1 or more and return true if the first element and the last element are equal in the given array.
+        public bool Zad89(int[] array) => array.Length>0 && array[0]==array[^1];
+        //90. Write a C# Sharp program to check two given arrays of integers of length 1 or more and return true if they have the same first element or they have the same last element. 
+        public bool Zad90(int[] arrayOne, int[] arrayTwo) => (arrayOne.Length>0&& arrayTwo.Length>0) && (arrayOne[0]==arrayTwo[0]||arrayOne[^1]==arrayTwo[^1]);
+        //91. Write a C# Sharp program to compute the sum of the elements of an given array of integers.
+        public int Zad91(IEnumerable<int> collection) => collection.Sum();  
+        //92. Write a C# Sharp program to rotate the elements of a given array of integers (length 4 ) in left direction and return the new array.
+        public int[] Zad92(int[] array)
+        {
+            int temp = array[0];
+            for (var i = 0; i < array.Length-1; i++)
+                array[i]= array[i+1];
+            array[^1] = temp;
+            return array;
+        }
+        //93. Write a C# Sharp program to reverse a given array of integers and length 5.
+        public IEnumerable<int> Zad93(IEnumerable<int> collection) => collection.Reverse();
+        //94. Write a C# Sharp program to find out the maximum element between the first or last element in a given array of integers ( length 4), replace all elements with maximum element. 
+        public int[] Zad94(int[] array)
+        {
+            int max;
+            if (array.Length>1)
+            {
+                max = Math.Max(array[0],array[^1]);
+                for (var i = 0; i < array.Length; i++)
+                {
+                    array[i] = max;
+                }
+            }
+            return array;
+        }
+        //95. Write a C# Sharp program to create a new array containing the middle elements from the two given arrays of integers, each length 5.
+        public int[] Zad95(int[] arrayOne, int[] arrayTwo) => new int[] {arrayOne[arrayOne.Length/2],arrayTwo[arrayTwo.Length/2]};
+        //96. Write a C# Sharp program to create a new array taking  the first and last elements of a given array of integers and length 1 or more.
+        public int[] Zad96(int[] array) => array.Length>0? new int[]{array[0],array[^1]} : new int[] {0};
+        //97. Write a C# Sharp program to check if a given array of integers and length 2, contains 15 or 20.
+        public bool Zad97(IEnumerable<int> collection) => collection.Contains(15) || collection.Contains(20);
+        //98. Write a C# Sharp program to check if a given array of integers and length 2, does not contain 15 or 20.
+        public bool Zad98(IEnumerable<int> collection) => !Zad97(collection);
+        //99. Write a C# Sharp program to create a new array of integers and length 1 or more. The length of the new array will be double length of the given array and all the elements are 1 except the first element which is equal to the given array.
+        public int[] Zad99(int[] array)
+        {
+            int[] final;
+            if(array.Length>0)
+            {
+                final = new int[array.Length*2];
+                final[0]=array[0];
+                for (var i = 1; i < array.Length; i++)
+                {
+                    final[i]=1;
+                }
+            }
+            final = new int[] {0};
+           return final; 
+        } 
+        //100. Write a C# Sharp program to check a given array of integers and return true if the array contains 10 or 20 twice. The length of the array will be 0, 1, or 2.
+        public bool Zad100(IEnumerable<int> collection)
+        {
+            bool flag10=false, flag20=false;
+            foreach (var item in collection)
+            {
+                if (item==10)
+                {
+                    if (flag10)
+                        return true;
+                    flag10=true;
+                }
+                else if(item ==20)
+                {
+                    if (flag20)
+                        return true;
+                    flag20=true;
+                }
+            }
+            return false;
+        }
+        //101. Write a C# Sharp program to check a given array of integers, length 3 and create a new array. If there is a 5 in the given array immediately followed by a 7 then set 7 to 1. 
+        public int[] Zad101(int[] array)
+        {
+            for (var i = 0; i < array.Length-1; i++)
+            {
+                if (array[i]==5 && array[i+1]==7)
+                    array[i+1]=1;
+            }
+            return array;
+        }
+        //102. Write a C# Sharp program to compute the sum of the two given arrays of integers, length 3 and find the array which has the largest sum.
+        public int[] Zad102(int[] firstArr, int[] secondArr)
+        {
+            int[] maxValues;
+         if (firstArr.Length==secondArr.Length)
+         {
+            maxValues = new int[firstArr.Length];
+            for (var i = 0; i < firstArr.Length; i++)
+            {
+                maxValues[i] = Math.Max(firstArr[i],secondArr[i]);
+            }
+         }
+         else
+         {
+            int smallerArr = Math.Min(firstArr.Length,secondArr.Length);
+            maxValues = new int[smallerArr];
+            for (var i = 0; i <smallerArr ; i++)
+            {
+                maxValues[i] = Math.Max(firstArr[i],secondArr[i]);
+            }
+         }
+         return maxValues;
+        }
+        //103. Write a C# Sharp program to create an array taking two middle elements from a given array of integers of length even
+        public int[] Zad103(int[] array) => new int[] {array[array.Length/2-1], array[array.Length/2]};
+        //104. Write a C# Sharp program to create a new array from two give array of integers, each length 3
+        public IEnumerable<int> Zad104(IEnumerable<int> firstArr, IEnumerable<int> secondArr) => firstArr.Concat(secondArr);
+        //105. Write a C# Sharp program to create a new array swapping the first and last elements of a given array of integers and length will be least 1. 
+        public int[] Zad105(int[] array)
+        {
+            if (array.Length>0)
+            {
+                int temp = array[0];
+                array[0]= array[^1];
+                array[^1]=temp;
+            }
+            return array;
+        }
+        //106. Write a C# Sharp program to create a new array length 3 from a given array (length at least 3) using the elements from the middle of the array. 
+        public int[] Zad106(int[] array)
+        {
+            int[] finalArr = array;
+            if (array.Length>=3)
+            {
+                int middle = array.Length/2;
+                finalArr = new int[3] {array[middle-1],array[middle],array[middle+1]};
+            }
+            return finalArr;
+        }
+        //107. Write a C# Sharp program to find the largest value from first, last, and middle elements of a given array of integers of odd length (at least 1).
+        public int Zad107(int[] array) => Math.Max(array[0],Math.Max(array[^1],array[array.Length/2]));
+        //108. Write a C# Sharp program to create a new array taking the first two elements from a given array. If the length of the given array is less than 2 then return the give array
+        public int[] Zad108(int[] array) => array.Length<2? array : array[0..2];
+        //109. Write a C# Sharp program to count even number of elements in a given array of integers.
+        public int Zad109(IEnumerable<int> collection)
+        {
+            int counter = 0;
+            foreach (var item in collection)
+            {
+                if (item%2==0)
+                    counter++;
+            }
+            return counter;
+        }
+        //110. Write a C# Sharp program to compute the difference between the largest and smallest values in a given array of integers and length one or more. 
+        public int Zad110(IEnumerable<int> collection)
+        {
+            int min= int.MaxValue, max = int.MinValue;
+            foreach (var item in collection)
+            {
+                if (item<min)
+                    min=item;
+                if (item>max)
+                    max = item;
+            }
+            return max-min;
+        }
+        //111. Write a C# Sharp program to compute the sum of values in a given array of integers except the number 17. Return 0 if the given array has no integer. 
+        public int Zad111(IEnumerable<int> collection) => collection.Sum(x => x!=17? x:0);
+        //112. Write a C# Sharp program to compute the sum of the numbers in a given array except those numbers starting with 5 followed by at least one 6. Return 0 if the given array has no integer. 
+        public int Zad112(IEnumerable<int>collection)
+        {
+            bool flag = false;
+            int sum = 0;
+            foreach (var item in collection)
+            {
+                sum +=item;
+                if (item==5)
+                {
+                    flag=true;
+                }
+                else if(item==6&& flag)
+                {
+                    sum -=11;
+                    flag=false;
+                }
+                else
+                    flag = false;
+            }
+            return sum;
+        }
+        //113. Write a C# Sharp program to check if a given array of integers contains 5 next to a 5 somewhere.
+        public bool Zad113(IEnumerable<int> collection)
+        {
+            bool flag = false;
+            foreach (var item in collection)
+            {
+                if (item ==5 && flag)
+                    return true;
+                else if (item ==5)
+                    flag = true;
+                else
+                    flag = false;
+            }
+            return false;
+        }
+        //114. Write a C# Sharp program to check whether a given array of integers contains 5's and 7's
+        public bool Zad114(IEnumerable<int> collection) => collection.Contains(7) || collection.Contains(5);
+        //115. Write a C# Sharp program to check if the sum of all 5' in the array exactly 15 in a given array of integers.
+        public bool Zad115(IEnumerable<int> collection) => collection.Sum(x => x==5? 5:0)==15;
+        //116. Write a C# Sharp program to check if the number of 3's is greater than the number of 5's.
+        public bool Zad116(IEnumerable<int> collection) => collection.Count(x => x==3) >collection.Count(x => x==5);
+        //117. Write a C# Sharp program to check if a given array of integers contains a 3 or a 5
+        public bool Zad117(IEnumerable<int> collection) => collection.Contains(3) || collection.Contains(5);
+        //118. Write a C# Sharp program to check if a given array of integers contains no 3 or a 5
+        public bool Zad118(IEnumerable<int> collection) => !Zad118(collection);
+        //119. Write a C# Sharp program to check if an array of integers contains a 3 next to a 3 or a 5 next to a 5 or both.
+        public bool Zad119(IEnumerable<int> collection)
+        {
+            bool threeFlag = false, fiveFlag=false;
+            foreach (var item in collection)
+            {
+                if (item==5)
+                {
+                    if (fiveFlag)
+                        return true;
+                    fiveFlag = true;
+                }
+                else if(item ==3)
+                {
+                    if (threeFlag)
+                        return true;
+                    threeFlag = true;
+                }
+                else
+                {
+                    threeFlag=false;
+                    fiveFlag=false;
+                }
+            }
+            return false;
+        }
+        //120. Write a C# Sharp program to check a given array of integers and return true if the given array contains two 5's next to each other, or two  5 separated by one element.
+        public bool Zad120(int[] array)
+        {
+            if (array.Length>2)
+            {
+                for (var i = 0; i < array.Length-2; i++)
+                {
+                    if ((array[i]==5 && (array[i+1]==5 || array[i+2]==5 )) ||(array[i+1]==5 && array[i+2]==5 ))
+                        return true;
+                }
+            }
+            else
+                 return array[0]==5 && array[1]==5;
+            return false;
+        }
+        //121. Write a C# Sharp program to check a given array of integers and return true if there is a 3 with a 5 somewhere later in the given array.
+        public bool Zad121(IEnumerable<int> collection)
+        {
+            bool isThree=false;
+            foreach (var item in collection)
+            {
+                if (item==3)
+                    isThree=true;
+                else if(item==5 && isThree)
+                    return true;
+            }
+            return false;
+        }
+        //122. Write a C# Sharp program to check a given array of integers and return true if the given array contains either 2 even or 2 odd values all next to each other.
+        public bool Zad122(int[] array)
+        {
+            if (array.Length<2)
+                return false;
+            else
+            {
+                for (var i = 0; i < array.Length-1; i++)
+                {
+                    if ((array[i]%2==0 && array[i+1]%2==0)||(array[i]%2!=0 && array[i+1]%2!=0))
+                        return true;
+                }
+                return false;
+            }
+        }
+        //123. Write a C# Sharp program to check a given array of integers and return true if the value 5 appears 5 times and there are no 5 next to each other.
+        public bool Zad123(int[] array)
+        {
+            int counter =0;
+            for (var i = 0; i < array.Length-1; i++)
+            {
+                if (array[i]==5)
+                {
+                    if (array[i+1]==5)
+                        return false;
+                    else
+                        counter++;
+                }
+            }
+            counter += array[^1]==5? 1 : 0;
+            return counter==5;
+        }
+        //124. Write a C# Sharp program to check a given array of integers and return true if every 5 that appears in the given array is next to another 5.
+        public bool Zad124(int[] array)
+        {
+            bool fiveHasPair= false;
+            for (var i = 0; i < array.Length-1; i++)
+            {
+                if (array[i]==5 && array[i+1]==5)
+                {
+                    fiveHasPair= true;
+                    i++;
+                }
+                else if (array[i]==5 && array[i+1]!=5)
+                return false;
+            }
+            if (array[^1]==5)
+            {
+                fiveHasPair = array[^2]==5;
+            }
+            return fiveHasPair;
+        }
+        //125. Write a C# Sharp program to check a given array of integers and return true if the specified number of same elements appears at the start and end of the given array.
+        public bool Zad125(int[] array, int length) => array[0..length].SequenceEqual(array[^(length)..]);
+        //126. Write a C# Sharp program to check a given array of integers and return true if the array contains three increasing adjacent numbers.
+        public bool Zad126(int[] array)
+        {
+            if (array.Length>=3)
+            {
+                for (var i = 0; i < array.Length-2; i++)
+                {
+                    if (array[i]<=array[i+1] && array[i+1]<array[i+2])
+                        return true;
+                }
+            }
+                return false;
+        }
+
 
 
 
