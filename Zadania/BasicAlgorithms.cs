@@ -801,6 +801,184 @@ namespace Zadania
             }
                 return false;
         }
+        //127. Write a C# Sharp program to shift an element in left direction and return a new array.
+        //127 == zad92
+        //128. Write a C# Sharp program to create a new array taking the elements before the element value 5 from a given array of integers.
+        public int[] Zad128(int[] array)
+        {
+            int newLength = array.Length;
+            int[] newArray;
+            for (var i = 0; i < array.Length; i++)
+            {
+                if(array[i]==5)
+                {
+                    newLength=i;
+                    break;
+                }
+            }
+            newArray= new int[newLength];
+            for (var i = 0; i < newLength; i++)
+                newArray[i]=array[i];
+            return newArray;
+        }
+        //129. Write a C# Sharp program to create a new array taking the elements after the element value 5 from a given array of integers.
+        public int[] Zad129(int[] array)
+        {
+            int start=0;
+            int[] newArray;
+            if (array.Contains(5))
+            {
+                for (var i = 0; i < array.Length; i++)
+                {
+                    if (array[i]==5)
+                    {
+                        start=i+1;
+                        break;
+                    }
+                }
+                newArray = new int[array.Length-start];
+                for (var i = 0; i < newArray.Length; i++)
+                {
+                    newArray[i]=array[i+start];
+                }            
+                return newArray;
+            }
+            else
+                return array;
+        }
+        //130. Write a C# Sharp program to create a new array from a given array of integers shifting all zeros to left direction.
+        public int[] Zad130(int[] array)
+        {
+            int j=0,temp;
+            for (var i = 0; i < array.Length; i++)
+            {
+                if (array[i]==0)
+                {
+                    temp = array[j];
+                    array[j++]=0;
+                    array[i]=temp;
+                }
+            }
+            return array;
+        }
+        //131. Write a C# Sharp program to create a new array after replacing all the values 5 with 0 shifting all zeros to right direction.
+        public int[] Zad131(int[] array)
+        {
+            int j =1, temp;
+
+            for (var i = 0; i < array.Length; i++)
+            {
+                if (array[i]==5)
+                    array[i]=0;
+            }
+            for (int i = array.Length-1; i >=0 ; i--)
+            {
+                if (array[i]==0)
+                {
+                   temp= array[^j];
+                   array[^j++] = 0;
+                   array[i] = temp;
+                }
+            }
+            return array;
+        }
+        //132. Write a C# Sharp program to create new array from a given array of integers shifting all even numbers before all odd numbers.
+        public int[] Zad132(int[] array)
+        {
+            int j=0, temp;
+            for (var i = 0; i < array.Length; i++)
+            {
+                if (array[i]%2==0)
+                {
+                    temp = array[j];
+                    array[j++]=array[i];
+                    array[i]=temp;
+                }
+            }
+            return array;
+        }
+        //133. Write a C# Sharp program to check if the value of each element is equal or greater than the value of previous element of a given array of integers.
+        public bool Zad133(int[] array)
+        {
+            for (int i = 0; i < array.Length-1; i++)
+            {
+                if (array[i]>array[i+1])
+                    return false;
+            }
+            return true;
+        }
+        //134. Write a C# Sharp program to check a given array (length will be at least 2) of integers and return true if there are two values 15, 15 next to each other.
+        public bool Zad134(int[] array)
+        {
+            for (int i = 0; i < array.Length-1; i++)
+            {
+                if (array[i]==15&& array[i+1]==15)
+                    return true;
+            }
+            return false;
+        }
+        //135. Write a C# Sharp program to find the larger average value between the first and the second half of a given array of integers and minimum length is at least 2. Assume that the second half begins at index (array length)/2.
+        public int Zad135(int[]array)
+        {
+            int firstSum=0, secondSum=0, firstAvg, secondAvg;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (i>=array.Length/2)
+                    secondSum += array[i];
+                    
+                else
+                    firstSum +=array[i];
+            }
+            firstAvg = firstSum/(array.Length/2);
+            secondAvg = secondSum/(array.Length-(array.Length/2));
+            return Math.Max(firstAvg,secondAvg);
+        }
+        //136. Write a C# Sharp program to count the number of strings with given length in given array of strings.
+        public int Zad136(string[] array, int length) => array.Count(x=>x.Length==length);
+        //137. Write a C# Sharp program to create a new array using the first n strings from a given array of strings. (n>=1 and <=length of the array).
+        public string[] Zad137(string[] array, int length)
+        {
+            if (length>=1 && length<=array.Length)
+                return array[0..length];
+            else
+                return array;
+        }
+        //138. Write a C# Sharp program to create a new array from a given array of strings  using all the strings whose length are matched with given string length.
+        public string[] Zad138(string[] array, int length) => array.Where(x=>x.Length==length).ToArray();
+        //139. Write a C# Sharp program to check a positive integer and return true if it contains a number 2
+        public bool Zad139(int value) => value.ToString().Contains('2');
+        //140. Write a C# Sharp program to create a new array of given length using the odd numbers from a given array of positive integers.
+        public int[] Zad140(int[] array, int length)
+        {
+            int[] onlyOdd = new int[length];
+            int j=0;
+            for (int i = 0; i <array.Length ; i++)
+            {
+                if (array[i]%2!=0)
+                    onlyOdd[j++]=array[i];
+            }
+            return onlyOdd;
+        }
+        //141. Write a C# Sharp program to create a new list from a given list of integers where each element is multiplied by 3.
+        public List<int> Zad141(List<int> array) => array.Select(x => x*3).ToList();
+        //142. Write a C# Sharp program to create a new list from a given list of integers where each integer multiplied by itself three times.
+        public List<int> Zad142(List<int> array) => array.Select(x => x*x*x).ToList();
+        //143. Write a C# Sharp program to create a new list from a given list of strings where each element has "#" added at the beginning and end position.
+        public List<string> Zad143(List<string> array) => array.Select(x => $"#{x}#").ToList();
+        //144. Write a C# Sharp program to create a new list from a given list of strings where each element is replaced by 4 copies of the string concatenated together.
+        public List<string> Zad144(List<string> array) => array.Select(x=> x+x+x+x).ToList();
+        //145. Write a C# Sharp program to create a new list from a given list of integers where each integer value is added to 2 and the result value is multiplied by 5. 
+        public List<int> Zad145(List<int> array) => array.Select(x=> (x+2)*5).ToList();
+        //146. Write a C# Sharp program to create a new list of the rightmost digits from a given list of positive integers.
+        public List<int> Zad146(List<int> array) => array.Select(x => x%10).ToList();
+        //147. Write a C# Sharp program to create a new list from a given list of strings where strings will be in upper case in new string.
+        public List<string> Zad147(List<string> array) => array.Select(x=> x.ToUpper()).ToList();
+        //148. Write a C# Sharp program to remove all "a" in each string in given list of strings and return the new string.
+        public List<string> Zad148(List<string> array) => array.Select(x => x.Replace("a",string.Empty)).ToList();
+        //149. Write a C# Sharp program to create a new list from a given list of integers removing those values which are less than 4
+        public List<int> Zad149(List<int> array) => array.Where(x => x>4).ToList();
+        //150. Write a C# Sharp program to create a new list from a given list of integers removing those values end with 7.
+        public List<int> Zad150(List<int> array) => array.Where(x=> x%10!=7).ToList();
 
 
 
