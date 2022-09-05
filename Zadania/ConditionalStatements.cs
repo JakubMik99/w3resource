@@ -75,10 +75,365 @@ namespace Zadania
                 return$"Miejsce zerowe1 : {x1} \nMiejsce zerowe2 : {x2}";
             }
             else
-                return "brak miejs zerowych";
+                return "brak miejsc zerowych";
+        }
+        //12. Write a C# Sharp program to read roll no, name and marks of three subjects and calculate the total, percentage and division.
+        public string Zad12(int rollNumber, string studentName, int physics, int chemistry, int computerApp)
+        {
+            int totalMarks = physics+chemistry+computerApp;
+            float per = totalMarks/3;
+            string div = per>=60? "First" : (per<60 && per>=48? "second" : (per<48&&per>=36 ? "pass" : "fail"));
+            string outcome = $"Roll no: {rollNumber}\nName of student: {studentName}\n" +
+                             $"Physics: {physics}\nChemistry: {chemistry}\n ComputerApplication {computerApp}\n" +
+                             $"Total: {totalMarks} \nPercentage: {per}\n Division: {div}";
+            return outcome;
+        }
+        //13. Write a C# Sharp program to read temperature in centigrade and display a suitable message according to temperature state below : Go to the editor
+        // Temp < 0 then Freezing weather
+        // Temp 0-10 then Very Cold weather
+        // Temp 10-20 then Cold weather
+        // Temp 20-30 then Normal in Temp
+        // Temp 30-40 then Its Hot
+        // Temp >=40 then Its Very Hot 
+        public string Zad13(int temp)
+        {
+            string tempState= string.Empty;
+            switch (temp)
+            {
+                case <0:
+                tempState = "Its freezing";
+                break;
+                case >=0 and <10:
+                tempState = "Its its very cold";
+                break;
+                case >=10 and <20:
+                tempState = "Its cold";
+                break;      
+                case >=20 and <30:
+                tempState = "Its normal temp";
+                break;
+                case >=30 and <40:
+                tempState = "Its hot";
+                break;     
+                case >=40:
+                tempState = "Its very hot";
+                break;
+                default:
+            }
+            return tempState;
+        }
+        //14. Write a C# Sharp program to check whether a triangle is Equilateral, Isosceles or Scalene.
+        public string Zad14(int sideA, int sideB, int sideC)
+        {
+            string typeOfTriangle;
+            if(sideA==sideB && sideB==sideC)
+                typeOfTriangle ="Equilateral";
+            else if((sideA==sideB && sideC!=sideA)||(sideC==sideB && sideC!=sideA)||(sideA==sideC && sideC!=sideB))
+                typeOfTriangle = "Isosceles";
+            else
+                typeOfTriangle = "Scalene";
+            return typeOfTriangle;
+
+        }
+        //15. Write a C# Sharp program to check whether a triangle can be formed by the given value for the angles.
+        public string Zad15(int angleA, int angleB, int angleC) => angleA+angleB+angleC ==180? "triangle is valid" : "triangle is not valid";
+        //16. Write a C# Sharp program to check whether an alphabet is a vowel or consonant.
+        public string Zad16(char letter) => letter=='a'||letter=='e'||letter=='i'||letter=='o'||letter=='u'||letter=='y'? "vowel" : "consonant";
+        //17. Write a C# Sharp program to calculate profit and loss on a transaction.
+        public string Zad17(int spending, int income)
+        {
+            int profit = income-spending;
+            if (profit>0)
+                return $"Profit equals {profit}";
+            else
+                return $"Loss equals {profit}";
+        }
+        //18. Write a program in C# Sharp to calculate and print the Electricity bill of a given customer. 
+        public string Zad18(int id, string name, int consumed)
+        {
+            string bill = string.Empty, perUnit="0";
+            float price=0, surchage=0;
+            switch (consumed)
+            {
+                case <200:
+                price = consumed*1.2f;
+                perUnit="1,2";
+                break;
+                case >=200 and <400:
+                price = consumed*1.5f;
+                perUnit="1,5";
+                break;
+                case >=400 and <600:
+                price = consumed*1.8f;
+                perUnit="1,8";
+                break;
+                case >600:
+                price = consumed*2f;
+                perUnit="2";
+                break;
+                
+                default:
+                price = 0;
+                break;
+            }
+            if (price>=400)
+                surchage= price*0.15f;  
+            
+            bill=$"Customer ID: {id}\nCustomer name {name}\nUnits consumed {consumed}\nAmount charges @RS {perUnit} per unit: {price}\n"+
+                 $"Surchage Amount: {surchage}\nNet amount {price+surchage}";
+            return bill;
+
+        }
+        //19. Write a program in C# Sharp to accept a grade and declare the equivalent description :
+        public string Zad19(char grade)
+        {
+            string description = string.Empty;
+            switch (grade)
+            {
+                case 'E':
+                    description = "Excellent";
+                    break;
+                case 'V':
+                    description = "Very good";
+                    break;
+                case 'G':
+                    description = "Good";
+                    break;
+                case 'A':
+                    description = "Average";
+                    break;
+                case 'F':
+                    description = "Fail";
+                    break;
+                default:
+                    break;
+            }
+            return description;
+        }
+        //20. Write a program in C# Sharp to read any day number in integer and display day name in the word.
+        public string Zad20(byte day)
+        {
+            string nameOfTheDay=string.Empty;
+            switch (day)
+            {
+                case 1:
+                nameOfTheDay="Monday";
+                    break;
+                case 2:
+                nameOfTheDay="Tuesday";
+                    break;
+                case 3:
+                nameOfTheDay="Wednesday";
+                    break;
+                case 4:
+                nameOfTheDay="Thursday";
+                    break;
+                case 5:
+                nameOfTheDay="Friday";
+                    break;
+                case 6:
+                nameOfTheDay="Saturday";
+                    break;
+                case 7:
+                nameOfTheDay="Sunday";
+                    break;
+                
+                default:
+                break;
+            }
+            return nameOfTheDay;
+        }
+        //21. Write a program in C# Sharp to read any digit, display in the word.
+        public string Zad21(byte digit)
+        {
+            string name = string.Empty;
+            switch (digit)
+            {
+                case 0:
+                    name="zero";
+                    break;
+                case 1:
+                    name="one";
+                    break;
+                case 2:
+                    name="two";
+                    break;
+                case 3:
+                    name="three";
+                    break;
+                case 4:
+                    name="four";
+                    break;
+                case 5:
+                    name="five";
+                    break;
+                case 6:
+                    name="six";
+                    break;
+                case 7:
+                    name="seven";
+                    break;
+                case 8:
+                    name="eight";
+                    break;
+                case 9:
+                    name="nine";
+                    break;                                                                                                                                                                                
+                default:
+                break;
+            }
+            return name;
+        }
+        //22. Write a program in C# Sharp to read any Month Number in integer and display Month name in the word. 
+        public string Zad22(byte month)
+        {
+            string name = string.Empty;
+            switch (month)
+            {
+                case 1:
+                    name="January";
+                    break;
+                case 2:
+                    name="February";
+                    break;
+                case 3:
+                    name="March";
+                    break;
+                case 4:
+                    name="April";
+                    break;
+                case 5:
+                    name="May";
+                    break;
+                case 6:
+                    name="June";
+                    break;
+                case 7:
+                    name="July";
+                    break;
+                case 8:
+                    name="August";
+                    break;
+                case 9:
+                    name="September";
+                    break;
+                case 10:
+                    name="October";
+                    break;
+                case 11:
+                    name="November";
+                    break;
+                case 12:
+                    name="December";
+                    break;                                                                                                                                                                                                                            
+                
+                default:
+                    break;
+            }
+            return name;
+        }
+        //23. Write a program in C# Sharp to read any Month Number in integer and display the number of days for this month.
+        public int Zad23(byte month)
+        {
+            int amount=0;
+            switch (month)
+            {
+                case 1:
+                    amount=31;
+                    break;
+                case 2:
+                    amount=28;
+                    break;
+                case 3:
+                    amount=31;
+                    break;
+                case 4:
+                    amount=30;
+                    break;
+                case 5:
+                    amount=31;
+                    break;
+                case 6:
+                    amount=30;
+                    break;
+                case 7:
+                    amount=31;
+                    break;
+                case 8:
+                    amount=31;
+                    break;
+                case 9:
+                    amount=30;
+                    break;
+                case 10:
+                    amount=31;
+                    break;
+                case 11:
+                    amount=30;
+                    break;
+                case 12:
+                    amount=31;
+                    break;                                                                                                                                                                                                                            
+                
+                default:
+                    break;
+            }
+            return amount;
+        }
+        //24. Write a program in C# Sharp which is a Menu-Driven Program to compute the area of the various geometrical shape
+        public void Zad24(byte figure)
+        {
+
+          DataTypes DT = new DataTypes();   
+            switch (figure)
+            {
+                case 1:
+                int sideA = int.Parse(Console.ReadLine());
+                Console.WriteLine($"Area of a square = {sideA*sideA}");
+                break;
+                case 2:
+                Console.WriteLine($"First side, then height");
+                float triangleSide = float.Parse(Console.ReadLine()), triangleHeight=float.Parse(Console.ReadLine());
+                Console.WriteLine($"Area of triangle = {triangleSide*triangleHeight/2}");
+                break;
+                case 3:
+                Console.WriteLine($"input circle radius");
+                float radius = float.Parse(Console.ReadLine()), per;                
+                Console.WriteLine($"Circle area = {DT.Zad5(radius,out per)}");
+                break;
+                default:
+                break;
+            }
         }
 
-
+        //25. Write a program in C# Sharp which is a Menu-Driven Program to perform a simple calculation
+        /// <summary>
+        /// calculation = 1 Addition, 2 substracion, 3 multiplication 4 division
+        /// </summary>
+        public int Zad26(byte calculation, int firstVal, int secondVal)
+        {
+            int result;
+            switch (calculation)
+            {
+                case 1:
+                    result = firstVal+secondVal;
+                break;
+                case 2:
+                    result = firstVal-secondVal;
+                break;
+                case 3:
+                    result = firstVal*secondVal;
+                break;
+                case 4:
+                    result = firstVal/secondVal;
+                break;
+                
+                default:
+                result = 0;
+                break;
+            }
+            return result;
+        }
 
 
 

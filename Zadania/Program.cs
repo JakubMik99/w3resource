@@ -4,7 +4,7 @@ BasicExercises BE = new BasicExercises();
 BasicAlgorithms BA = new BasicAlgorithms();
 DataTypes DT = new DataTypes();
 ConditionalStatements CS = new ConditionalStatements();
-Console.WriteLine(CS.Zad11(4,4,1));
+Console.WriteLine(CS.Zad18(1,"jan",800));
 
  // Console.WriteLine(string.Join(',',BA.Zad150(new List<int>    { 10, 22, 35 , 47, 53, 67 })));
 // BA.Zad125(new int[] { 3, 7, 5, 5, 3, 7 }, 2);
