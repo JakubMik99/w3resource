@@ -181,7 +181,7 @@ namespace Zadania
           }      
           return sumOfPrimes;
         }
-        private bool IsPrime(int value)
+        public bool IsPrime(int value)
         {
             if (value<2)
                 return false;
